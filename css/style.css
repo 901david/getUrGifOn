@@ -1,0 +1,27 @@
+button {
+	margin: 10px;
+}
+.buttonArea {
+	background-color: lightgray;
+	height:275px;
+	border-bottom: 5px solid black;
+}
+#addToArray {
+	margin-top: 75px;
+	margin-bottom: 25px;
+
+}
+h2{
+	text-align: center;
+}
+.addArea {
+	border-left:5px solid black;
+	height:800px;
+}
+.imageArea {
+	height: 800px;
+}
+/*.imageArea img {
+	float:left;
+}
+*/
