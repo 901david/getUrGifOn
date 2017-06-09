@@ -21,7 +21,10 @@ h2{
 .imageArea {
 	height: 800px;
 }
-/*.imageArea img {
-	float:left;
+.lookBetter {
+	text-align: center;
 }
-*/
+.grabMe {
+	display: inline-block;
+	
+}
