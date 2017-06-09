@@ -16,26 +16,13 @@ function whatImage (x) {
 					$(x).attr("src", $(x).attr("data-switch-back"));
 				}
 };
-
-
-
-$(document).ready(function(){
-	$(".buttonArea").append("<h2>Top 25 Comedy Movies according to Rolling Stone</h2>");
+function displayButtons () {
 	for (var i = 0; i < choices.length; i++){
 		$(".buttonArea").append("<button class='btn btn-danger btn-md clickSearch' data-search=" + choices[i].data + ">" + choices[i].movie + "</button>");
 	}
-	$(".imageArea").append("<div class='row'><h1 class='center-block'>Top Trending Photos</h1><p class='center-block'>Click a comedy from above to see more GIFS!</p></div>");
-	$.ajax({
-		url: "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC",
-		method: "GET"
-	}).done(function(response) {
-		for (var i = 0; i < 9; i++){
-			console.log(response.data[i].images.fixed_width.url);
-
-			$(".imageArea").append("<div class='col-lg-4 center-block'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img src='" + response.data[i].images.fixed_width.url + "'>");
-		};
-	});
-	$(".clickSearch").on("click", function () {
+};
+function searchForImages () {
+			$(".clickSearch").on("click", function () {
 		$(".imageArea").empty();
 		$(".imageArea").append("<h1 class='center-block'>" + $(this).html() + "</h1>");
 		userClick = $(this).attr("data-search");
@@ -64,10 +51,33 @@ $(document).ready(function(){
 		
 	});
 });
-		$(".buttonToAdd").on("click", function () {
+
+}
+
+
+
+$(document).ready(function(){
+	$(".buttonArea").append("<h2>Top 25 Comedy Movies according to Rolling Stone</h2>");
+	displayButtons();
+	$(".imageArea").append("<div class='row'><h1 class='center-block'>Top Trending Photos</h1><p class='center-block'>Click a comedy from above to see more GIFS!</p></div>");
+	$.ajax({
+		url: "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC",
+		method: "GET"
+	}).done(function(response) {
+		for (var i = 0; i < 9; i++){
+			console.log(response.data[i].images.fixed_width.url);
+
+			$(".imageArea").append("<div class='col-lg-4'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img src='" + response.data[i].images.fixed_width.url + "'>");
+		};
+	});
+		searchForImages();
+		$(".buttonToAdd").on("click", function (event) {
+		event.preventDefault();
 		var tempVar = $("#addToArray").val()
-		console.log(tempVar);
-		choices.push({movie: tempVar, data: tempVar});
-		console.log(choices);
+		choices.push({movie: tempVar, data: tempVar.replace(" ", "+")});
+		$(".buttonArea").empty();
+		displayButtons();
+		searchForImages();
+		$("#addToArray").val("");
 	});
 });
