@@ -13,7 +13,7 @@ var clicked = false;
 function whatImage (x) {
 	if (clicked) {
 		$(x).attr("src", $(x).attr("data-switch"));
-		
+
 	}
 	else {
 		$(x).attr("src", $(x).attr("data-switch-back"));
@@ -29,9 +29,9 @@ function displayButtons () {
 function searchForImages () {
 	$(".clickSearch").on("click", function () {
 		$(".imageArea").empty();
-		$(".imageArea").append("<h1 class='center-block'>" + $(this).html() + "</h1>");
+		$(".imageArea").append("<h1 class='lookBetter'>" + $(this).html() + "</h1>");
 		userClick = $(this).attr("data-search");
-		url = "http://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=dc6zaTOxFJmzC";
+		url = "https://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=dc6zaTOxFJmzC";
 		console.log(url);
 		$.ajax({
 			url: url,
@@ -49,9 +49,9 @@ function searchForImages () {
 					clicked = true;
 					whatImage(this);
 				}
-				
+
 			});
-			
+
 		});
 	});
 
@@ -64,7 +64,7 @@ $(document).ready(function(){
 	displayButtons();
 	$(".imageArea").append("<div class='row'><h1 class='lookBetter'>Top Trending Photos</h1><p class='lookBetter'>Click a comedy from above to see more GIFS!</p></div>");
 	$.ajax({
-		url: "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC",
+		url: "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC",
 		method: "GET"
 	}).done(function(response) {
 		for (var i = 0; i < 9; i++){
