@@ -3,7 +3,7 @@ button {
 }
 .buttonArea {
 	background-color: lightgray;
-	height:275px;
+	padding-bottom: 10px;
 	border-bottom: 5px solid black;
 }
 #addToArray {

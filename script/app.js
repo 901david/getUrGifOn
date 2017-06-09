@@ -3,7 +3,19 @@ var choices = [{movie: "1. Blazing Saddles", data: "Blazing+Saddles" }, {movie: 
 var userInput;
 var userClick;
 var url;
+var switchVal;
+var switchBack;
+var clicked = false;
 
+function whatImage (x) {
+				if (clicked) {
+				$(x).attr("src", $(x).attr("data-switch"));
+				
+			}
+				else {
+					$(x).attr("src", $(x).attr("data-switch-back"));
+				}
+};
 
 
 
@@ -20,12 +32,12 @@ $(document).ready(function(){
 		for (var i = 0; i < 9; i++){
 			console.log(response.data[i].images.fixed_width.url);
 
-			$(".imageArea").append("<div class='col-lg-4 center-block'><span>Rating: " + response.data[i].rating + "</span><br/><img src='" + response.data[i].images.fixed_width.url + "'>");
+			$(".imageArea").append("<div class='col-lg-4 center-block'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img src='" + response.data[i].images.fixed_width.url + "'>");
 		};
 	});
 	$(".clickSearch").on("click", function () {
 		$(".imageArea").empty();
-		console.log("This click up top works");
+		$(".imageArea").append("<h1 class='center-block'>" + $(this).html() + "</h1>");
 		userClick = $(this).attr("data-search");
 		url = "http://api.giphy.com/v1/gifs/search?q=" + userClick + "&api_key=dc6zaTOxFJmzC";
 		console.log(url);
@@ -34,23 +46,28 @@ $(document).ready(function(){
 			method: "GET"
 		}).done(function(response) {
 			for (var i = 0; i < 9; i++){
-				$(".imageArea").append("<div class='col-lg-4 img-responsive clickOn'><span>Rating: " + response.data[i].rating + "</span><br/><img src='" + response.data[i].images.fixed_width_still.url + "'>");
-			}
-			$(".clickOn").click(function () {
-				$(this).html("<img src='" + response.data[i].images.fixed_width.url + "'>");
-				console.log(response.data[i].images.fixed_width.url);
-			});
-			$(".clickOn").click(function () {
-				$(this).html("<img src='" + response.data[i].images.fixed_width.url + "'>");
-				
-			});
-			
-		});
-	});
-	
-	
-	$(".buttonToAdd").on("click", function () {
-		console.log("Add click worked");
-	});
+				$(".imageArea").append("<div class='col-lg-4 img-responsive clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_width.url + "' data-switch-back='" + response.data[i].images.fixed_width_still.url + "' src='" + response.data[i].images.fixed_width_still.url + "'>");
 
+				
+			}
+			$(".grabMe").click(function () {
+				if (clicked) {
+				clicked = false;	
+				whatImage(this);
+			}
+			else {
+				clicked = true;
+				whatImage(this);
+			}
+	
+			});
+		
+	});
+});
+		$(".buttonToAdd").on("click", function () {
+		var tempVar = $("#addToArray").val()
+		console.log(tempVar);
+		choices.push({movie: tempVar, data: tempVar});
+		console.log(choices);
+	});
 });
