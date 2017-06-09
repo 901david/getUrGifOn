@@ -1,5 +1,3 @@
-
-
 // This array will generate the "search" categories on the Giphy Site
 var choices = [{movie: "1. Blazing Saddles", data: "Blazing+Saddles" }, {movie: "2. Airplane" , data: "Airplane"}, {movie: "3. Monty Python & the Holy Grail", data: "Monty+Python+and+the+Holy+Grail"}, {movie: "4. Animal House", data: "Animal+House"},{movie: "5. Young Frankenstein", data: "Young+Frankenstein"}, {movie: "6. Caddyshack", data: "Caddyshack"}, {movie: "7. This is Spinal Tap", data: "This+is+Spinal+Tap"}, {movie: "8. The Life of Brian", data: "The+Life+of+Brian"}, {movie: "9. Dumb & Dumber", data: "Dumb+Dumber"}, {movie: "10. The Naked Gun", data: "The+Naked+Gun"}, {movie: "11. The Jerk", data: "The+Jerk"}, {movie: "12. The Big Lebowski", data: "The+Big+Lebowski"}, {movie: "13. There's Something About Mary", data: "Something+About+Mary"}, {movie: "14. Borat", data: "Borat"}, {movie: "15. A Fish Called Wanda", data: "Fish+Called+Wanda"}, {movie: "16. The 40-Year-Old Virgin", data: "40+year+old+virgin"}, {movie: "17. Step Brothers", data: "Step+Brothers"}, {movie: "18. Anchorman", data: "Anchorman"}, {movie: "19. Office Space", data: "Office+Space"}, {movie: "20. Planes Trains and Automobiles", data: "Planes+Trains+and+automobiles+movie"}, {movie: "21. Raising Arizona", data: "Raising+Arizona"}, {movie: "22. Dr. Strangelove", data: "Dr+Strangelove"}, {movie: "23. Blues Brothers", data: "Blues+Brothers"}, {movie: "24. Tommy Boy", data: "Tommy+Boy"}, {movie: "25. Superbad", data: "Superbad"} ];
 // Definition of Variables
@@ -49,16 +47,10 @@ function searchForImages () {
 					clicked = true;
 					whatImage(this);
 				}
-
 			});
-
 		});
 	});
-
 }
-
-
-
 $(document).ready(function(){
 	$(".buttonArea").append("<h2>Top 25 Comedy Movies according to Rolling Stone</h2>");
 	displayButtons();
