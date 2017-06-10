@@ -36,7 +36,7 @@ function searchForImages () {
 			method: "GET"
 		}).done(function(response) {
 			for (var i = 0; i < 10; i++){
-				$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-2 col-lg-2 img-responsive clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_width.url + "' data-switch-back='" + response.data[i].images.fixed_width_still.url + "' src='" + response.data[i].images.fixed_width_still.url + "'>");	
+				$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-4 col-lg-2 img-responsive clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_width.url + "' data-switch-back='" + response.data[i].images.fixed_width_still.url + "' src='" + response.data[i].images.fixed_width_still.url + "'>");	
 			}
 			$(".grabMe").click(function () {
 				if (clicked) {
@@ -62,7 +62,7 @@ $(document).ready(function(){
 		for (var i = 0; i < 9; i++){
 			console.log(response.data[i].images.fixed_width.url);
 
-			$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-2 col-lg-2 img-responsive'><span>Ratng: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='img-responsive' src='" + response.data[i].images.fixed_width.url + "'>");
+			$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-4 col-lg-2 img-responsive'><span>Ratng: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='img-responsive' src='" + response.data[i].images.fixed_width.url + "'>");
 		};
 	});
 	searchForImages();
