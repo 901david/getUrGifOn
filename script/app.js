@@ -36,7 +36,7 @@ function searchForImages () {
 			method: "GET"
 		}).done(function(response) {
 			for (var i = 0; i < 10; i++){
-				$(".imageArea").append("<div class='col-xs-5 col-s-5 col-md-2 col-lg-2 clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_width.url + "' data-switch-back='" + response.data[i].images.fixed_width_still.url + "' src='" + response.data[i].images.fixed_width_still.url + "'>");	
+				$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-2 col-lg-2 clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_width.url + "' data-switch-back='" + response.data[i].images.fixed_width_still.url + "' src='" + response.data[i].images.fixed_width_still.url + "'>");	
 			}
 			$(".grabMe").click(function () {
 				if (clicked) {
