@@ -37,7 +37,7 @@ function searchForImages () {
 			method: "GET"
 		}).done(function(response) {
 			for (var i = 0; i < 10; i++){
-				$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-4 col-lg-2 img-responsive clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe img-responsive' data-switch='" + response.data[i].images.fixed_width.url + "' data-switch-back='" + response.data[i].images.fixed_width_still.url + "' src='" + response.data[i].images.fixed_width_still.url + "'>");	
+				$(".imageArea").append("<div class='col-xs-12 col-s-12 col-md-5 col-md-offset-1 col-lg-5 clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_height.url + "' data-switch-back='" + response.data[i].images.fixed_height_still.url + "' src='" + response.data[i].images.fixed_height_still.url + "'>");	
 			}
 			$(".grabMe").click(function () {
 				if (clicked) {
@@ -55,15 +55,15 @@ function searchForImages () {
 $(document).ready(function(){
 	$(".buttonArea").append("<h2>Top 25 Comedy Movies according to Rolling Stone</h2>");
 	displayButtons();
-	$(".imageArea").append("<div class='row'><h1 class='lookBetter'>Top Trending Photos</h1><p class='lookBetter'>Click a comedy from above to see more GIFS!</p></div>");
+	$(".imageArea").append("<div class='row'><h1 class='lookBetter'>Top Trending GIFs</h1><p class='lookBetter'>Click a comedy from above to see more GIFS!</p></div>");
 	$.ajax({
 		url: "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC",
 		method: "GET"
 	}).done(function(response) {
-		for (var i = 0; i < 9; i++){
+		for (var i = 0; i < 10; i++){
 			console.log(response.data[i].images.fixed_width.url);
 
-			$(".imageArea").append("<div class='col-xs-12 col-s-4 col-md-4 col-lg-2 img-responsive'><span>Ratng: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='img-responsive' src='" + response.data[i].images.fixed_width.url + "'>");
+			$(".imageArea").append("<div class='col-xs-12 col-s-12 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1'><span>Ratng: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='' src='" + response.data[i].images.fixed_height.url + "'>");
 		};
 	});
 	searchForImages();
