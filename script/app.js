@@ -37,7 +37,7 @@ function searchForImages () {
 			method: "GET"
 		}).done(function(response) {
 			for (var i = 0; i < 10; i++){
-				$(".imageArea").append("<div class='col-xs-12 col-s-12 col-md-5 col-md-offset-1 col-lg-5 clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='grabMe' data-switch='" + response.data[i].images.fixed_height.url + "' data-switch-back='" + response.data[i].images.fixed_height_still.url + "' src='" + response.data[i].images.fixed_height_still.url + "'>");	
+				$(".imageArea").append("<div class='col-xs-12 col-s-12 col-md-5 col-md-offset-1 col-lg-5 clickOn'><span>Rating: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='img-responsive grabMe' data-switch='" + response.data[i].images.fixed_height.url + "' data-switch-back='" + response.data[i].images.fixed_height_still.url + "' src='" + response.data[i].images.fixed_height_still.url + "'>");	
 			}
 			$(".grabMe").click(function () {
 				if (clicked) {
@@ -63,7 +63,7 @@ $(document).ready(function(){
 		for (var i = 0; i < 10; i++){
 			console.log(response.data[i].images.fixed_width.url);
 
-			$(".imageArea").append("<div class='col-xs-12 col-s-12 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1'><span>Ratng: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='' src='" + response.data[i].images.fixed_height.url + "'>");
+			$(".imageArea").append("<div class='col-xs-12 col-s-12 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1'><span>Ratng: " + response.data[i].rating.toUpperCase() + "</span><br/><img class='img-responsive' src='" + response.data[i].images.fixed_height.url + "'>");
 		};
 	});
 	searchForImages();
