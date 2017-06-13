@@ -73,6 +73,7 @@ $(document).ready(function(){
 		userInputOne = tempVar.replace(/ /g, '+');
 		choices.push({movie: tempVar, data: userInputOne});
 		$(".buttonArea").empty();
+		$(".buttonArea").append("<h2>Top 25 Comedy Movies according to Rolling Stone</h2>");
 		displayButtons();
 		searchForImages();
 		$("#addToArray").val("");
